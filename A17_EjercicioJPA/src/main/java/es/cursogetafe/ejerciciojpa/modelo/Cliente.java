@@ -3,6 +3,14 @@ package es.cursogetafe.ejerciciojpa.modelo;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+
+@Table(name = "clientes")
 public class Cliente extends Rol implements Serializable{
 
 	private int nroCliente;
