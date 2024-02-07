@@ -7,9 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-
+@Entity
 @Table(name = "clientes")
 public class Cliente extends Rol implements Serializable{
 
@@ -37,6 +40,10 @@ public class Cliente extends Rol implements Serializable{
 		this.categoria = categoria;
 	}
 
+	@ManyToMany
+	@JoinTable(name = "clientes_productos", 
+				joinColumns = @JoinColumn (name = "idrol"),
+				inverseJoinColumns = @JoinColumn(name = "idProducto"))
 	public List<Producto> getProductos() {
 		return productos;
 	}
@@ -44,4 +51,10 @@ public class Cliente extends Rol implements Serializable{
 	public void setProductos(List<Producto> productos) {
 		this.productos = productos;
 	}
+
+	@Override
+	public String toString() {
+		return "Cliente [nroCliente=" + nroCliente + ", categoria=" + categoria + ", productos=" + productos + ", idRol="+ getIdRol() + "]";
+	}
+	
 }
